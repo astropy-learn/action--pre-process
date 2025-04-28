@@ -26,6 +26,13 @@ runs:
       shell: bash
       run: pip install pyyaml
 
+    - name: diag
+      uses: jaywcjlove/github-action-folder-tree@main
+      with:
+        exclude: "node_modules|dist|.git|.husky"
+        path: .
+        depth: 5
+
     - name: Populate _config.yml
       id: py-yml
       shell: bash
