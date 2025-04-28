@@ -34,10 +34,6 @@ runs:
         path: .
         depth: 5
     
-    - name: print diagnostics
-      shell: bash
-      run: | 
-        echo "Tree: $(echo "${{ steps.tree.outputs.tree }}"
 
     - name: Populate _config.yml
       id: py-yml
