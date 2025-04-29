@@ -5,6 +5,11 @@ inputs:
     type: string
     required: true
 
+outputs:
+  tutorial-slug:
+    description: "Tutorial slug"
+    value: ${{ steps.py-yml.outputs.TUTORIAL-SLUG }}
+
 runs:
   using: "composite"
   steps:
@@ -25,23 +30,8 @@ runs:
     - name: Install build requirements
       shell: bash
       run: pip install pyyaml
-
-    - name: diag
-      id: tree
-      uses: jaywcjlove/github-action-folder-tree@main
-      with:
-        exclude: "node_modules|dist|.git|.husky"
-        path: .
-        depth: 5
     
-
     - name: Populate _config.yml
       id: py-yml
       shell: bash
       run: echo "TUTORIAL-SLUG=$(python astropy-tutorials/scripts/populate_yml.py)" >> "$GITHUB_OUTPUT"
-
-    - name: Call custom action to execute and convert notebook
-      uses: astropy-learn/execute-convert@main
-      with: 
-        python-version: ${{ inputs.python-version }}
-        tutorial-slug: ${{ steps.py-yml.outputs.TUTORIAL-SLUG }}
