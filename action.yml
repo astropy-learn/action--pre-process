@@ -34,4 +34,4 @@ runs:
     - name: Populate _config.yml
       id: py-yml
       shell: bash
-      run: echo "TUTORIAL-SLUG=$(python astropy-tutorials/scripts/populate_yml.py)" >> "$GITHUB_OUTPUT"
+      run: echo "TUTORIAL-SLUG=$(python astropy-tutorials/scripts/pre-process.py)" >> "$GITHUB_OUTPUT"
