@@ -30,7 +30,7 @@ runs:
     - name: Install build requirements
       shell: bash
       run: pip install pyyaml
-    
+
     - name: Populate _config.yml
       id: py-yml
       shell: bash
