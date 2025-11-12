@@ -13,14 +13,14 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - name: Check out helper scripts from astropy-tutorials
+    - name: Check out helper current repo
+      uses: actions/checkout@v4
+
+    - name: Check out astropy-tutorials repo
       uses: actions/checkout@v4
       with:
-        submodules: 'true'
-
-    - name: Add submodule
-      run: git submodule add https://github.com/astropy-learn/astropy-tutorials
-      shell: bash
+        repository: astropy-learn/astropy-tutorials
+        path: astropy-tutorials
 
     - name: Set up Python
       uses: actions/setup-python@v5
